@@ -3,7 +3,7 @@
 {% block content %}
 <div class="grid grid-cols-5 gap-6">
     <div class="col-span-3">
-        <img src="{{item.image.url}}" class="rounded-xl">
+        <img src="{{item.image.url}}" class="object-fill h-96 w-96 rounded-xl">
     </div>
 
     <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
@@ -34,17 +34,19 @@
     <h2 class="mb-12 text-2xl text-center">Related items</h2>
     <div class="grid grid-cols-3 gap-3">
         {%for item in related_items%}
-        <div>
+        <div class="card bg-gray-100 w-96 shadow-xl">
             <a href="{% url 'item:detail' item.id %}">
-                <div>
-                    <img src="{{item.image.url}}" class="rounded-t-xl">
-                </div>
-                <div class="p-6 bg-white rounded-b-xl">
-                    <h2 class="text-2xl">{{item.name}}</h2>
-                    <p class="text-gray-500">Price: {{item.price}}</p>
-                </div>
-            </a>
-        </div>
+            <figure>
+              <img
+                src="{{item.image.url}}"
+                alt="item"/ class="object-fill h-96 w-96">
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">{{item.name}}</h2>
+              <p>{{item.price}}</p>
+            </div>
+        </a>
+          </div>
         {% endfor %}
     </div>
 </div>
